@@ -49,7 +49,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              No more scrolling through profiles! Jump into fun video chats with awesome people who share your interests. Whether you're into gaming, art, or just want someone to chat with – your next best friend is a click away! ✨
+              No more scrolling through profiles! Jump into fun video chats with awesome people who share your interests. Whether you&apos;re into gaming, art, or just want someone to chat with – your next best friend is a click away! ✨
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <button onClick={() => signInWithGoogle()} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg">
@@ -80,7 +80,7 @@ export default function Home() {
       <section id="features" className="py-20">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
-            Why You'll Love It Here! 💝
+            Why You&apos;ll Love It Here! 💝
           </h2>
           <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
             Join thousands of amazing people who are making genuine connections every day through fun, safe, and meaningful video chats!
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-purple-50 to-pink-50">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            What's Coming Soon! 🚀
+            What&apos;s Coming Soon! 🚀
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">

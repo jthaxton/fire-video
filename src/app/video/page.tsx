@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react"
-import { getFirestore, collection, doc, setDoc, getDoc, onSnapshot, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDoc, onSnapshot, addDoc } from "firebase/firestore";
 import { db } from "../util/firebase";
 export default function Video() {
     useEffect(() => {
@@ -15,16 +15,16 @@ export default function Video() {
           
         
         const pc = new RTCPeerConnection(servers);
-        let localStream = null;
-        let remoteStream = null;
+        let localStream: MediaStream | null = null;
+        let remoteStream: MediaStream | null = null;
         
-        const webcamButton = document.getElementById("webcamButton");
-        const webcamVideo = document.getElementById("webcamVideo");
-        const callButton = document.getElementById("callButton");
-        const callInput = document.getElementById("callInput");
-        const answerButton = document.getElementById("answerButton");
-        const remoteVideo = document.getElementById("remoteVideo");
-        const hangupButton = document.getElementById("hangupButton");
+        const webcamButton = document.getElementById("webcamButton") as HTMLButtonElement;
+        const webcamVideo = document.getElementById("webcamVideo") as HTMLVideoElement;
+        const callButton = document.getElementById("callButton") as HTMLButtonElement;
+        const callInput = document.getElementById("callInput") as HTMLInputElement;
+        const answerButton = document.getElementById("answerButton") as HTMLButtonElement;
+        const remoteVideo = document.getElementById("remoteVideo") as HTMLVideoElement;
+        const hangupButton = document.getElementById("hangupButton") as HTMLButtonElement;
         
         if (!webcamButton || !webcamVideo || !remoteVideo || !callButton || !hangupButton || !callInput || !answerButton) return;
         webcamButton.onclick = async () => {
@@ -32,10 +32,10 @@ export default function Video() {
           localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
           remoteStream = new MediaStream();
         
-          localStream.getTracks().forEach((track) => pc.addTrack(track, localStream));
+          localStream.getTracks().forEach((track) => localStream && pc.addTrack(track, localStream));
         
           pc.ontrack = (event) => {
-            event.streams[0].getTracks().forEach((track) => remoteStream.addTrack(track));
+            event.streams[0].getTracks().forEach((track) => remoteStream && remoteStream.addTrack(track));
           };
         
           webcamVideo.srcObject = localStream;
@@ -124,7 +124,7 @@ export default function Video() {
             });
           });
         };
-    }, [document])
+    }, [])
     return (
         <>
         <head>
@@ -161,7 +161,7 @@ export default function Video() {
 
     <button id="hangupButton" disabled>Hangup</button>
 
-    <script type="module" src="/main.js"></script>
+    {/* <script type="module" src="/main.js"></script> */}
 
   </body>
   </>
